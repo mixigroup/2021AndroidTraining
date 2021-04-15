@@ -13,5 +13,10 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        val editText = findViewById<EditText>(R.id.editText)
+        editText.addTextChangedListener {
+            val textView = findViewById<TextView>(R.id.textView)
+            textView.text = it.toString()
+        }
     }
 }
