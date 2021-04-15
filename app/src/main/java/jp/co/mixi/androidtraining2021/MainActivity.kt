@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -20,12 +22,18 @@ class MainActivity : AppCompatActivity() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
 
-        val textList = mutableListOf<String>()
-        for (i in 0..100) {
-            textList.add("要素$i")
+        val button = findViewById<Button>(R.id.button)
+        button.setOnClickListener {
+            val editText = findViewById<EditText>(R.id.editText)
+            val text = editText.text.toString()
+
+            val newList = adapter.textList.toMutableList()
+            newList.add(text)
+            adapter.textList = newList
+            adapter.notifyDataSetChanged()
+
+            editText.setText("")
         }
-        adapter.textList = textList
-        adapter.notifyDataSetChanged()
     }
 }
 
