@@ -3,4 +3,6 @@
 
     <string name="text_view_body">TextViewのテキストです</string>
     <string name="button_text">決定</string>
+    <string name="button_start">開始</string>
+    <string name="button_cancel">停止</string>
 </resources>
