@@ -5,4 +5,8 @@
     <string name="button_text">決定</string>
     <string name="button_start">開始</string>
     <string name="button_cancel">停止</string>
+    <string name="tz_japan">日本時間</string>
+    <string name="tz_hawaii">ハワイ時間</string>
+    <string name="tz_beijing">北京時間</string>
+    <string name="tz_india">インド時間</string>
 </resources>

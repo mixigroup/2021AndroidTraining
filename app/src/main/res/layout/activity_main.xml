@@ -17,23 +17,39 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/startButton"
+        android:id="@+id/buttonTzJapan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/button_start"
-        app:layout_constraintEnd_toStartOf="@id/stopButton"
+        android:text="@string/tz_japan"
+        app:layout_constraintEnd_toStartOf="@id/buttonTzHawaii"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textView" />
 
     <Button
-        android:id="@+id/stopButton"
+        android:id="@+id/buttonTzHawaii"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:text="@string/button_cancel"
+        android:text="@string/tz_hawaii"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/startButton"
+        app:layout_constraintStart_toEndOf="@id/buttonTzJapan"
         app:layout_constraintTop_toBottomOf="@id/textView" />
+
+    <Button
+        android:id="@+id/buttonTzBeijing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tz_beijing"
+        app:layout_constraintEnd_toEndOf="@id/buttonTzJapan"
+        app:layout_constraintTop_toBottomOf="@id/buttonTzJapan" />
+
+    <Button
+        android:id="@+id/buttonTzIndia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/tz_india"
+        app:layout_constraintStart_toStartOf="@id/buttonTzHawaii"
+        app:layout_constraintTop_toTopOf="@id/buttonTzBeijing" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
