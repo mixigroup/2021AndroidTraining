@@ -1,8 +1,8 @@
 package jp.co.mixi.androidtraining2021
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
-import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 
@@ -14,26 +14,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val textView = findViewById<TextView>(R.id.textView)
-        viewModel.clockText.observe(this) {
-            textView.text = it
-        }
+        val button = findViewById<Button>(R.id.button)
+        button.setOnClickListener {
+            val intent = Intent(this, SubActivity::class.java)
+            intent.putExtra(SubActivity.EXTRA_REPOSITORY_OWNER, "mixi-inc")
+            intent.putExtra(SubActivity.EXTRA_REPOSITORY_NAME, "AndroidTraining")
 
-        val buttonTzJapan = findViewById<Button>(R.id.buttonTzJapan)
-        buttonTzJapan.setOnClickListener {
-            viewModel.timeZoneSelection.value = MainViewModel.TIME_ZONE_JAPAN
-        }
-        val buttonTzHawaii = findViewById<Button>(R.id.buttonTzHawaii)
-        buttonTzHawaii.setOnClickListener {
-            viewModel.timeZoneSelection.value = MainViewModel.TIME_ZONE_HAWAII
-        }
-        val buttonTzBeijing = findViewById<Button>(R.id.buttonTzBeijing)
-        buttonTzBeijing.setOnClickListener {
-            viewModel.timeZoneSelection.value = MainViewModel.TIME_ZONE_BEIJING
-        }
-        val buttonTzIndia = findViewById<Button>(R.id.buttonTzIndia)
-        buttonTzIndia.setOnClickListener {
-            viewModel.timeZoneSelection.value = MainViewModel.TIME_ZONE_INDIA
+            startActivity(intent)
         }
     }
 }
