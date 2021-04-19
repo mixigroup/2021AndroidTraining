@@ -39,5 +39,10 @@ class SubActivity : AppCompatActivity() {
             forkCountTextView.text = it
         }
 
+        if (viewModel.repositoryResponse.value == null) {
+            val owner = intent.getStringExtra(EXTRA_REPOSITORY_OWNER)!!
+            val name = intent.getStringExtra(EXTRA_REPOSITORY_NAME)!!
+            viewModel.loadRepository(owner, name)
+        }
     }
 }

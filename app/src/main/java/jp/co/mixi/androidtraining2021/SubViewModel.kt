@@ -1,10 +1,15 @@
 package jp.co.mixi.androidtraining2021
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.map
+import androidx.lifecycle.viewModelScope
 import jp.co.mixi.androidtraining2021.model.Repository
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class SubViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -26,4 +31,16 @@ class SubViewModel(application: Application) : AndroidViewModel(application) {
         "フォーク数: ${it.forks_count}"
     }
 
+    fun loadRepository(owner: String, repo: String) {
+        viewModelScope.launch {
+            try {
+                val response = withContext(Dispatchers.IO) {
+                    GithubApiRepository().getRepository(owner, repo)
+                }
+                repositoryResponse.value = response
+            } catch (e: Exception) {
+                Log.e("MixiLesson", "Error", e)
+            }
+        }
+    }
 }
