@@ -23,5 +23,17 @@ class MainActivity : AppCompatActivity() {
         buttonTzJapan.setOnClickListener {
             viewModel.timeZoneSelection.value = MainViewModel.TIME_ZONE_JAPAN
         }
+        val buttonTzHawaii = findViewById<Button>(R.id.buttonTzHawaii)
+        buttonTzHawaii.setOnClickListener {
+            viewModel.timeZoneSelection.value = MainViewModel.TIME_ZONE_HAWAII
+        }
+        val buttonTzBeijing = findViewById<Button>(R.id.buttonTzBeijing)
+        buttonTzBeijing.setOnClickListener {
+            viewModel.timeZoneSelection.value = MainViewModel.TIME_ZONE_BEIJING
+        }
+        val buttonTzIndia = findViewById<Button>(R.id.buttonTzIndia)
+        buttonTzIndia.setOnClickListener {
+            viewModel.timeZoneSelection.value = MainViewModel.TIME_ZONE_INDIA
+        }
     }
 }

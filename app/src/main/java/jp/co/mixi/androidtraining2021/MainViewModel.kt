@@ -25,11 +25,21 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     val timeZoneSelection = MutableLiveData<Int>(TIME_ZONE_JAPAN)
 
-    val clockText = currentEpochTime.map {
-        val calendar = Calendar.getInstance(TimeZone.getTimeZone("GMT+9:00"))
-        calendar.timeInMillis = it
+    val clockText = timeZoneSelection.switchMap { tz ->
+        currentEpochTime.map {
+            val timeZonId = when (tz) {
+                TIME_ZONE_JAPAN -> "GMT+9:00"
+                TIME_ZONE_HAWAII -> "GMT-10:00"
+                TIME_ZONE_BEIJING -> "GMT+8:00"
+                TIME_ZONE_INDIA -> "GMT+5:30"
+                else -> ""
+            }
 
-        DateFormat.format("yyyy-MM-dd HH:mm:ss", calendar)
+            val calendar = Calendar.getInstance(TimeZone.getTimeZone(timeZonId))
+            calendar.timeInMillis = it
+
+            DateFormat.format("yyyy-MM-dd HH:mm:ss", calendar)
+        }
     }
 
 }
